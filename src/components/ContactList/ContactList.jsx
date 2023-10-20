@@ -25,13 +25,8 @@ import { selectorContacts, selectorFilter } from '../../redux/selectors';
 import { ContactListContainer } from './ContactList.styles';
 
 const ContactList = () => {
-  const dispatch = useDispatch();
   const contacts = useSelector(selectorContacts);
   const filter = useSelector(selectorFilter);
-
-  const handleDelete = contactId => {
-    dispatch(deleteContact(contactId));
-  };
 
   const filteredContacts = () => {
     if (filter) {
