@@ -19,11 +19,14 @@
 // export default ContactList;
 
 import React from 'react';
-import { useSelector } from 'react-redux';
+// import ContactItem from '../ContactItem/ContactItem';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectorContacts, selectorFilter } from '../../redux/selectors';
-import { ContactListContainer } from './ContactList.styles';
+import { ContactListContainer, List, DeleteBtn } from './ContactList.styles';
+import { deleteContact } from '../../redux/slice';
 
 const ContactList = () => {
+  const dispatch = useDispatch();
   const contacts = useSelector(selectorContacts);
   const filter = useSelector(selectorFilter);
 
@@ -37,13 +40,22 @@ const ContactList = () => {
   };
 
   const newContArr = filteredContacts();
+  const handleDeleteContact = id => {
+    dispatch(deleteContact(id)); // Викликаємо дію для видалення контакту за його id
+  };
 
   return (
     <ContactListContainer>
       {newContArr.map(contact => (
-        <li key={contact.id}>
-          {contact.name}: {contact.number}
-        </li>
+        <List key={contact.id}>
+          {contact.contactName}: {contact.number}
+          <DeleteBtn
+            className="DeleteBtn"
+            onClick={() => handleDeleteContact(contact.id)}
+          >
+            Delete
+          </DeleteBtn>
+        </List>
       ))}
     </ContactListContainer>
   );
