@@ -19,8 +19,7 @@
 // export default ContactList;
 
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from '../../redux/slice';
+import { useSelector } from 'react-redux';
 import { selectorContacts, selectorFilter } from '../../redux/selectors';
 import { ContactListContainer } from './ContactList.styles';
 

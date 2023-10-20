@@ -37,7 +37,7 @@ const ContactItem = ({ item }) => {
   // const handleDelete = id => {
   //   dispatch(deleteContact(id));
   // };
-  const handleDelete = () => {
+  const handleDelete = id => {
     dispatch(deleteContact(id));
   };
 
